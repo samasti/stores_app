@@ -1,0 +1,23 @@
+<menu>
+  <aside class="mdc-temporary-drawer mdc-typography" ref="drawer">
+    <nav class="mdc-temporary-drawer__drawer">
+      <header class="mdc-temporary-drawer__header">
+        <div class="mdc-temporary-drawer__header-content">
+          <Header>here</Header>
+        </div>
+      </header>
+      <nav class="mdc-temporary-drawer__content mdc-list" id="icon-with-text-demo">
+        <a class="mdc-list-item mdc-temporary-drawer--selected" href="#"><i aria-hidden="true" class="material-icons mdc-list-item__start-detail">inbox</i>Inbox </a><a class="mdc-list-item" href="#"><i aria-hidden="true" class="material-icons mdc-list-item__start-detail">star</i>Star </a>
+      </nav>
+    </nav>
+  </aside>
+  <script>
+    open() {
+      this.drawer.open = true
+    }
+    
+    this.on('mount', function () {
+      this.drawer = new mdc.drawer.MDCTemporaryDrawer(this.refs.drawer)
+    }.bind(this))
+  </script>
+</menu>

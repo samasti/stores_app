@@ -1,0 +1,10 @@
+source:      .
+destination: ./docs
+layouts:     ./_layouts
+
+plugins:
+  - jekyll-babel
+
+slim:
+  pretty: true
+

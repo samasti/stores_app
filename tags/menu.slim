@@ -1,0 +1,28 @@
+---
+---
+menu
+  aside class='mdc-temporary-drawer mdc-typography' ref='drawer'
+    nav class='mdc-temporary-drawer__drawer'
+      header class='mdc-temporary-drawer__header'
+        div class='mdc-temporary-drawer__header-content'
+          Header here
+
+      nav id='icon-with-text-demo' class='mdc-temporary-drawer__content mdc-list'
+        a class='mdc-list-item mdc-temporary-drawer--selected' href='#'
+          i class='material-icons mdc-list-item__start-detail' aria-hidden='true' inbox
+          'Inbox
+
+        a class='mdc-list-item' href='#'
+          i class='material-icons mdc-list-item__start-detail' aria-hidden='true' star
+          'Star
+
+  javascript:
+
+    open() {
+      this.drawer.open = true
+    }
+
+    this.on('mount', function () {
+      this.drawer = new mdc.drawer.MDCTemporaryDrawer(this.refs.drawer)
+    }.bind(this))
+

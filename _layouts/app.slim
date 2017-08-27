@@ -1,0 +1,46 @@
+---
+---
+doctype html
+html.mdc-typography
+  head
+    meta content='text/html; charset=UTF-8' http-equiv='Content-Type'
+    meta charset='utf-8'
+    meta content='width=device-width,initial-scale=1' name='viewport'
+
+    title Cirandas
+
+    link href='https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css' rel='stylesheet'
+    link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500' rel='stylesheet'
+    link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'
+
+    css:
+      body {
+        margin: 0;
+      }
+
+  body
+
+    / third party libraries
+    script src='https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js'
+    script src='https://cdn.jsdelivr.net/es6-promise/4.1.0/es6-promise.auto.min.js'
+    script src='https://cdn.jsdelivr.net/fetch/2.0.1/fetch.min.js'
+    script src='https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js'
+    script src='https://cdn.jsdelivr.net/momentjs/2.18.1/moment.min.js'
+
+    / internal libraries
+    script type='text/javascript' src='libs/url.js'
+    script type='text/javascript' src='libs/app.js'
+
+    / components
+    script type='riot/tag' src='tags/toolbar.html'
+    script type='riot/tag' src='tags/menu.html'
+    script src='https://cdn.jsdelivr.net/npm/riot@3.6/riot+compiler.js'
+    script type='text/javascript' src='libs/riot-raw.js'
+
+    toolbar
+
+    javascript:
+      mdc.autoInit()
+      app.load()
+
+    |{{ content }}

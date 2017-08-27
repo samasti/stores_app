@@ -1,0 +1,31 @@
+---
+---
+toolbar
+
+  header.mdc-toolbar
+    .mdc-toolbar__row
+      section.mdc-toolbar__section.mdc-toolbar__section--align-start
+        a href='#' class='material-icons mdc-toolbar__icon--menu' onclick='{openMenu}' menu
+        span.mdc-toolbar__title Cirandas
+
+  .mdc-linear-progress.mdc-linear-progress--indeterminate ref='loading' role='progressbar'
+    .mdc-linear-progress__buffering-dots
+    .mdc-linear-progress__buffer
+    .mdc-linear-progress__bar.mdc-linear-progress__primary-bar
+      span.mdc-linear-progress__bar-inner
+    .mdc-linear-progress__bar.mdc-linear-progress__secondary-bar
+      span.mdc-linear-progress__bar-inner
+
+  menu
+
+  javascript:
+
+    openMenu() {
+      this.tags.menu.open()
+    }
+
+    this.on('mount', function () {
+      app.loading = this.refs.loading
+    })
+
+

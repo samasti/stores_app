@@ -1,0 +1,29 @@
+<toolbar>
+  <header class="mdc-toolbar">
+    <div class="mdc-toolbar__row">
+      <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+        <a class="material-icons mdc-toolbar__icon--menu" href="#" onclick="{openMenu}">menu</a><span class="mdc-toolbar__title">Cirandas</span>
+      </section>
+    </div>
+  </header>
+  <div class="mdc-linear-progress mdc-linear-progress--indeterminate" ref="loading" role="progressbar">
+    <div class="mdc-linear-progress__buffering-dots"></div>
+    <div class="mdc-linear-progress__buffer"></div>
+    <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
+      <span class="mdc-linear-progress__bar-inner"></span>
+    </div>
+    <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
+      <span class="mdc-linear-progress__bar-inner"></span>
+    </div>
+  </div>
+  <menu></menu>
+  <script>
+    openMenu() {
+      this.tags.menu.open()
+    }
+    
+    this.on('mount', function () {
+      app.loading = this.refs.loading
+    })
+  </script>
+</toolbar>
