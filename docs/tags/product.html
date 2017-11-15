@@ -1,0 +1,26 @@
+<product>
+  <div class="mdc-card">
+    <section class="mdc-card__primary">
+      <h1 class="mdc-card__title mdc-card__title--large">
+        {p.name} 
+      </h1>
+    </section>
+    <section class="mdc-card__media" style="background-image: url({apiData.host+p.image_big})"></section>
+    <section class="mdc-card__supporting-text">
+      {p.description} 
+    </section>
+    <section class="mdc-card__actions">
+      <button class="mdc-button mdc-button--compact mdc-card__action">Action 1</button><button class="mdc-button mdc-button--compact mdc-card__action">Action 2</button>
+    </section>
+  </div>
+  <script>
+    this.p = opts.product
+  </script>
+  <style type="text/css">
+    .mdc-card__media {
+      height: 120px;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  </style>
+</product>

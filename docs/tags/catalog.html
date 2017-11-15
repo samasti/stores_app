@@ -1,0 +1,15 @@
+<catalog>
+  <div class="mdc-grid-list" if="{catalog}">
+    <ul class="mdc-grid-list__tiles">
+      <li class="mdc-grid-tile" each="{p in catalog.products}">
+        <product product="{p}"></product>
+      </li>
+    </ul>
+  </div>
+  <script>
+    api.catalog().then(function(json) {
+      this.catalog = json
+      this.update()
+    }.bind(this))
+  </script>
+</catalog>

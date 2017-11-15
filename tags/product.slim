@@ -1,0 +1,27 @@
+---
+---
+product
+  .mdc-card
+    section.mdc-card__primary
+      h1.mdc-card__title.mdc-card__title--large
+        '{p.name}
+      /h2.mdc-card__subtitle Subtitle here
+
+    section.mdc-card__media style='background-image: url({apiData.host+p.image_big})'
+
+    section.mdc-card__supporting-text
+      '{p.description}
+
+    section.mdc-card__actions
+      button.mdc-button.mdc-button--compact.mdc-card__action Action 1
+      button.mdc-button.mdc-button--compact.mdc-card__action Action 2
+
+  javascript:
+    this.p = opts.product
+
+  css:
+    .mdc-card__media {
+      height: 120px;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
