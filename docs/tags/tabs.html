@@ -1,0 +1,28 @@
+<tabs>
+  <div class="mdc-tab-bar-scroller" ref="scroller">
+    <div class="mdc-tab-bar-scroller__indicator mdc-tab-bar-scroller__indicator--back">
+      <a aria-label="scroll back button" class="mdc-tab-bar-scroller__indicator__inner material-icons" href="#">navigate_before</a>
+    </div>
+    <div class="mdc-tab-bar-scroller__scroll-frame">
+      <nav class="mdc-tab-bar" id="basic-tab-bar" ref="tabBar">
+        <a class="mdc-tab mdc-tab--active" href="#store" onclick="{select}">Loja</a><a class="mdc-tab" href="#orders" onclick="{select}">Pedidos</a><span class="mdc-tab-bar__indicator"></span>
+      </nav>
+    </div>
+    <div class="mdc-tab-bar-scroller__indicator mdc-tab-bar-scroller__indicator--forward"></div>
+  </div>
+  <store-tab class="tab-content" id="store"></store-tab><cycles-tab class="tab-content" id="cycles"></cycles-tab><orders-tab class="tab-content" id="orders"></orders-tab>
+  <script>
+    select(e) {
+      $('.tab-content').hide()
+      $($(e.target).attr('href')).show()
+    }
+    
+    this.on('mount', function() {
+      this.tabBar   = new mdc.tabs.MDCTabBar(this.refs.tabBar)
+      //this.scroller = new mdc.tabs.MDCTabBarScroller(this.refs.scroller, undefined, this.refs.tabBar)
+    
+      $('.tab-content').hide()
+      $('#store').show()
+    })
+  </script>
+</tabs>

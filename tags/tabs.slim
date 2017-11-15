@@ -1,0 +1,35 @@
+---
+---
+tabs
+
+  .mdc-tab-bar-scroller ref='scroller'
+    .mdc-tab-bar-scroller__indicator.mdc-tab-bar-scroller__indicator--back
+      a.mdc-tab-bar-scroller__indicator__inner.material-icons href='#' aria-label='scroll back button' navigate_before
+
+    .mdc-tab-bar-scroller__scroll-frame
+      nav.mdc-tab-bar id='basic-tab-bar' ref='tabBar'
+        a.mdc-tab.mdc-tab--active href='#store' onclick='{select}' Loja
+        /a class='mdc-tab' href='#cycles' onclick='{select}' Feiras
+        a.mdc-tab href='#orders' onclick='{select}' Pedidos
+        span.mdc-tab-bar__indicator
+
+    .mdc-tab-bar-scroller__indicator.mdc-tab-bar-scroller__indicator--forward
+
+  store-tab.tab-content id='store'
+  cycles-tab.tab-content id='cycles'
+  orders-tab.tab-content id='orders'
+
+  javascript:
+
+    select(e) {
+      $('.tab-content').hide()
+      $($(e.target).attr('href')).show()
+    }
+
+    this.on('mount', function() {
+      this.tabBar   = new mdc.tabs.MDCTabBar(this.refs.tabBar)
+      //this.scroller = new mdc.tabs.MDCTabBarScroller(this.refs.scroller, undefined, this.refs.tabBar)
+
+      $('.tab-content').hide()
+      $('#store').show()
+    })
