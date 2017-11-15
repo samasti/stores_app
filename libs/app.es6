@@ -3,7 +3,7 @@
 window.app = {
 
   load: () => {
-    riot.mount('toolbar')
+    riot.mount('app')
   },
 
 }
