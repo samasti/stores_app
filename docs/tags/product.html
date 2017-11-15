@@ -4,23 +4,42 @@
       <h1 class="mdc-card__title mdc-card__title--large">
         {p.name} 
       </h1>
+      <icon-toggle add-label="Adicionar aos favoritos" id="{p.id}" off-icon="favorite_border" on-icon="favorite" remove-label="Remover dos favoritos"></icon-toggle>
     </section>
     <section class="mdc-card__media" style="background-image: url({apiData.host+p.image_big})"></section>
     <section class="mdc-card__supporting-text">
       {p.description} 
     </section>
     <section class="mdc-card__actions">
-      <button class="mdc-button mdc-button--compact mdc-card__action">Action 1</button><button class="mdc-button mdc-button--compact mdc-card__action">Action 2</button>
+      <fab icon="add" label="adicionar" onclick="{add}"></fab>
     </section>
   </div>
   <script>
     this.p = opts.product
+    
+    add() {
+    }
   </script>
   <style type="text/css">
+    .mdc-card__primary h1 {
+      display: inline-block;
+    }
+    
     .mdc-card__media {
       height: 120px;
       background-repeat: no-repeat;
       background-size: cover;
+    }
+    
+    .mdc-card__actions {
+      flex-direction: row-reverse;
+    }
+    .order {
+      background-color: #558b2f;
+    }
+    
+    icon-toggle {
+      float: right;
     }
   </style>
 </product>

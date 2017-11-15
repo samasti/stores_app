@@ -6,6 +6,8 @@ product
       h1.mdc-card__title.mdc-card__title--large
         '{p.name}
       /h2.mdc-card__subtitle Subtitle here
+      icon-toggle id='{p.id}' on-icon='favorite' off-icon='favorite_border' remove-label='Remover dos favoritos' add-label='Adicionar aos favoritos'
+
 
     section.mdc-card__media style='background-image: url({apiData.host+p.image_big})'
 
@@ -13,15 +15,33 @@ product
       '{p.description}
 
     section.mdc-card__actions
-      button.mdc-button.mdc-button--compact.mdc-card__action Action 1
-      button.mdc-button.mdc-button--compact.mdc-card__action Action 2
+      fab icon='add' label='adicionar' onclick='{add}'
 
   javascript:
     this.p = opts.product
 
+    add() {
+    }
+
   css:
+    .mdc-card__primary h1 {
+      display: inline-block;
+    }
+
     .mdc-card__media {
       height: 120px;
       background-repeat: no-repeat;
       background-size: cover;
     }
+
+    .mdc-card__actions {
+      flex-direction: row-reverse;
+    }
+    .order {
+      background-color: #558b2f;
+    }
+
+    icon-toggle {
+      float: right;
+    }
+

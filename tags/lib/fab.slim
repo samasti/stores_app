@@ -1,0 +1,15 @@
+---
+---
+fab
+  button.mdc-fab.order.mdc-fab--mini.material-icons.mdc-ripple-upgraded.mdc-ripple-upgraded--background-active-fill.mdc-ripple-upgraded--foreground-activation aria-label='{label}' ref='button' style='--mdc-ripple-fg-size:24px; --mdc-ripple-fg-scale:2.77369; --mdc-ripple-fg-translate-start:15.4375px, 6px; --mdc-ripple-fg-translate-end:8px, 8px;'
+    span.mdc-fab__icon
+      '{icon}
+
+  javascript:
+    this.icon  = opts.icon
+    this.label = opts.label
+
+    this.on('mount', function() {
+      mdc.ripple.MDCRipple.attachTo(this.refs.button)
+    })
+

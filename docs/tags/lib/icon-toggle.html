@@ -1,0 +1,20 @@
+<icon-toggle><i aria-label="{label}" aria-pressed="false" class="mdc-icon-toggle material-icons mdc-ripple-upgraded mdc-ripple-upgraded--unbounded" ref="icon" role="button" tabindex="-1">{icon} </i>
+  <script>
+    this.onIcon      = opts.onIcon
+    this.offIcon     = opts.offIcon
+    this.addLabel    = opts.addLabel
+    this.removeLabel = opts.removeLabel
+    
+    this.icon        = this.offIcon
+    this.label       = opts.addLabel
+    
+    this.on('mount', function() {
+      mdc.iconToggle.MDCIconToggle.attachTo(this.refs.icon)
+      this.refs.icon.addEventListener('MDCIconToggle:change', function(evt) {
+        this.icon  = evt.detail.isOn ? this.onIcon      : this.offIcon
+        this.label = evt.detail.isOn ? this.removeLabel : this.addLabel
+        this.update()
+      }.bind(this))
+    }.bind(this))
+  </script>
+</icon-toggle>
