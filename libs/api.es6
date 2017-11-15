@@ -20,10 +20,7 @@ window.api = {
     return window
     .fetch(`${api.baseUrl}/${path}?${url.objectToQuery(params)}`)
     .then((response) => {
-      if (response.status == 403)
-        Cookies.remove('auth_token')
-      else
-        return response.json()
+      return response.json()
     })
   },
 
