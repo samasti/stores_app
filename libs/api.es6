@@ -14,6 +14,12 @@ window.api = {
     })
   },
 
+  orders: ({action = 'last'}) => {
+    return api.req({
+      path: `orders/${action}`,
+    })
+  },
+
   req: ({path, params = {}}) => {
     $(app.loading).show()
 

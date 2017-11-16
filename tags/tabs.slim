@@ -15,19 +15,13 @@ tabs
 
     .mdc-tab-bar-scroller__indicator.mdc-tab-bar-scroller__indicator--forward
 
-  loading
-
   javascript:
 
     select(e) {
-      $('.tab-content').hide()
-      $($(e.target).attr('href')).show()
+      app.pageManager.show($(e.target).attr('href'))
     }
 
     this.on('mount', function() {
       this.tabBar   = new mdc.tabs.MDCTabBar(this.refs.tabBar)
       //this.scroller = new mdc.tabs.MDCTabBarScroller(this.refs.scroller, undefined, this.refs.tabBar)
-
-      $('.tab-content').hide()
-      $('#store').show()
     })

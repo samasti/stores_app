@@ -4,8 +4,15 @@ app
 
   toolbar
 
-  store-tab.tab-content id='store'
-  cycles-tab.tab-content id='cycles'
-  orders-tab.tab-content id='orders'
+  loading
+
+  page-manager
 
   javascript:
+    window.app = this
+
+    this.on('mount', function() {
+      this.pageManager = this.tags['page-manager']
+      this.toolbar     = this.tags.toolbar
+    })
+

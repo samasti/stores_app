@@ -1,0 +1,36 @@
+.ham-menu-back {
+  width: 18px;
+  height: 18px;
+  padding: 19px;
+  transition-duration: 0.5s; }
+  .ham-menu-back .icon {
+    transition-duration: 0.5s;
+    position: absolute;
+    height: 2px;
+    width: 18px;
+    top: 28px;
+    background-color: white; }
+    .ham-menu-back .icon:before {
+      transition-duration: 0.5s;
+      position: absolute;
+      width: 18px;
+      height: 2px;
+      background-color: white;
+      content: "";
+      top: -5px; }
+    .ham-menu-back .icon:after {
+      transition-duration: 0.5s;
+      position: absolute;
+      width: 18px;
+      height: 2px;
+      background-color: white;
+      content: "";
+      top: 5px; }
+  .ham-menu-back.open .icon {
+    transition: 0.5s; }
+    .ham-menu-back.open .icon:before {
+      transform: rotateZ(-45deg) scaleX(0.75) translate(-5px, -2.29px); }
+    .ham-menu-back.open .icon:after {
+      transform: rotateZ(45deg) scaleX(0.75) translate(-5px, 2.29px); }
+  .ham-menu-back:hover {
+    cursor: pointer; }

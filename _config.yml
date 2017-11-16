@@ -8,3 +8,6 @@ plugins:
 slim:
   pretty: true
 
+sass:
+  sass_dir: styles
+

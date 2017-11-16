@@ -1,0 +1,31 @@
+<order>
+  <div class="mdc-card">
+    <section class="mdc-card__primary">
+      <div class="mdc-typography--subheading2 total">
+        Total do pedido ({order.items.length} itens): <span class="total-price">{order.currency_unit}{order.total_price.toFixed(2)} </span><button class="mdc-button mdc-button--raised confirm">Fechar </button>
+      </div>
+      <ul class="mdc-list mdc-list--avatar-list">
+        <li class="mdc-list-item" data-is="order-item" each="{i in order.items}" item="{i}"></li>
+      </ul>
+    </section>
+  </div>
+  <script>
+    this.order = opts.order
+    
+    this.on('mount', function () {
+      $('.mdc-list-item').each(function(i) {
+        mdc.ripple.MDCRipple.attachTo(this)
+      })
+    })
+  </script>
+  <style type="text/css">
+    .total-price {
+      color: #b1220a;
+      font-weight: bold;
+    }
+    
+    .confirm {
+      float: right;
+    }
+  </style>
+</order>

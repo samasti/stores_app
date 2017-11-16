@@ -6,12 +6,12 @@
       </h1>
       <icon-toggle add-label="Adicionar aos favoritos" id="{p.id}" off-icon="favorite_border" on-icon="favorite" remove-label="Remover dos favoritos"></icon-toggle>
     </section>
-    <section class="mdc-card__media" style="background-image: url({apiData.host+p.image_big})"></section>
+    <section class="mdc-card__media" style="background-image: url({apiData.host+p.image})"></section>
     <section class="mdc-card__supporting-text">
       {p.description} 
     </section>
     <section class="mdc-card__actions">
-      <fab icon="add" label="adicionar" onclick="{add}"></fab>
+      <fab icon="add_shopping_cart" label="adicionar" onclick="{add}"></fab>
     </section>
   </div>
   <script>

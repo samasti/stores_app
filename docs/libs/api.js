@@ -14,10 +14,19 @@ window.api = {
     });
   },
 
-  req: function req(_ref) {
-    var path = _ref.path;
-    var _ref$params = _ref.params;
-    var params = _ref$params === undefined ? {} : _ref$params;
+  orders: function orders(_ref) {
+    var _ref$action = _ref.action;
+    var action = _ref$action === undefined ? 'last' : _ref$action;
+
+    return api.req({
+      path: 'orders/' + action
+    });
+  },
+
+  req: function req(_ref2) {
+    var path = _ref2.path;
+    var _ref2$params = _ref2.params;
+    var params = _ref2$params === undefined ? {} : _ref2$params;
 
     $(app.loading).show();
 

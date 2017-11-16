@@ -1,0 +1,31 @@
+---
+---
+page-manager
+
+  store-tab.page.main-page id='store'
+
+  cycles-tab.page id='cycles'
+  past-orders.page id='orders'
+  current-order.page
+
+  javascript:
+
+    select(page) {
+      $('.page').hide()
+      $(page).show()
+    }
+
+    goHome() {
+      app.toolbar.back()
+      $('.page').hide()
+      $('.main-page').show()
+    }
+
+    navigate(page) {
+      app.toolbar.forward()
+      this.select(page)
+    }
+
+    this.on('mount', function() {
+      this.goHome()
+    }.bind(this))

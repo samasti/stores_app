@@ -1,0 +1,38 @@
+---
+---
+order-item
+
+  img.mdc-list-item__start-detail src='{apiData.host+i.image}' width='56' height='56'
+  span.mdc-list-item__text
+    '{i.name}
+    span.mdc-list-item__text__secondary
+      '{formattedQuantity()} {i.unit_name}(s)
+      span.item-price
+        '{order.currency_unit}{i.price.toFixed(2)}
+
+  span.mdc-list-item__end-detail
+    /span.mdc-form-field
+      input type='number' name='consumer_quantity'
+
+    a.material-icons
+      'remove_shopping_cart
+
+  javascript:
+    this.i     = opts.item
+    this.order = this.parent.order
+
+    this.i.price = parseFloat(this.i.price)
+
+    formattedQuantity() {
+      var q = this.i.status_quantity
+      if (parseFloat(q) - parseInt(q) == 0)
+        return parseInt(q)
+      else
+        return parseFloat(q).toString()
+    }
+
+  css:
+    .item-price {
+      color: #ce8c73;
+      font-weight: bold;
+    }

@@ -1,4 +1,10 @@
-<app><toolbar></toolbar><store-tab class="tab-content" id="store"></store-tab><cycles-tab class="tab-content" id="cycles"></cycles-tab><orders-tab class="tab-content" id="orders"></orders-tab>
+<app><toolbar></toolbar><loading></loading><page-manager></page-manager>
   <script>
+    window.app = this
+    
+    this.on('mount', function() {
+      this.pageManager = this.tags['page-manager']
+      this.toolbar     = this.tags.toolbar
+    })
   </script>
 </app>

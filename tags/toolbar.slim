@@ -4,18 +4,42 @@ toolbar
 
   header.mdc-toolbar
     .mdc-toolbar__row
+
       section.mdc-toolbar__section.mdc-toolbar__section--align-start
-        a href='#' class='material-icons mdc-toolbar__icon--menu' show='{false}' onclick='{openMenu}' menu
+        span.mdc-toolbar__menu-icon.ham-menu-back ref='menu' onclick='{onMenuClick}'
+          .icon
+        /i.material-icons.mdc-toolbar__menu-icon ref='menu' onclick='{openMenu}' menu
         span.mdc-toolbar__title Poda
-    tabs
+
+      section.mdc-toolbar__section.mdc-toolbar__section--align-end
+        a.material-icons.mdc-toolbar__icon href='#' aria-label='Pedido' alt='Pedido' onclick='{openCurrentOrder}' shopping_cart
+
+    /tabs
 
   menu
 
-
   javascript:
+
+    onMenuClick() {
+      if ($(this.refs.menu).hasClass('open'))
+        app.pageManager.goHome()
+      else
+        this.openMenu()
+    }
 
     openMenu() {
       this.tags.menu.open()
+    }
+
+    openCurrentOrder() {
+      app.pageManager.navigate('current-order')
+    }
+
+    forward() {
+      $(this.refs.menu).addClass('open')
+    }
+    back() {
+      $(this.refs.menu).removeClass('open')
     }
 
   css:
@@ -23,6 +47,6 @@ toolbar
       min-height: 40px;
     }
     .mdc-toolbar__title {
-      padding-bottom: 0px; /* too much space down */
+      //padding-bottom: 0px; /* too much space down with tabs */
     }
 

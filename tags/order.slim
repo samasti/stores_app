@@ -1,0 +1,36 @@
+---
+---
+order
+
+  .mdc-card
+    section.mdc-card__primary
+      .mdc-typography--subheading2.total
+        'Total do pedido ({order.items.length} itens):
+        span.total-price
+          '{order.currency_unit}{order.total_price.toFixed(2)}
+
+        button.mdc-button.mdc-button--raised.confirm
+          'Fechar
+
+      ul.mdc-list.mdc-list--avatar-list
+        li.mdc-list-item each='{i in order.items}' data-is='order-item' item='{i}'
+
+  javascript:
+    this.order = opts.order
+
+    this.on('mount', function () {
+      $('.mdc-list-item').each(function(i) {
+        mdc.ripple.MDCRipple.attachTo(this)
+      })
+    })
+
+  css:
+    .total-price {
+      color: #b1220a;
+      font-weight: bold;
+    }
+
+    .confirm {
+      float: right;
+    }
+

@@ -1,0 +1,88 @@
+---
+---
+
+@import 'lib/math';
+
+$dark: #212121;
+$light: #efefef;
+//$color: #b3e5fc;
+$color: white;
+
+$square: 56px;
+$size: 18px;
+$padding: ($square - $size)/2;
+$center: $padding + $size/2;
+
+$bar-weight: 2px;
+$bar-space: 5px;
+$bar-arrow: 2.29px; // sqrt(pow($bar-weight,2) - pow($bar-space,2))/2;
+
+@mixin btn() {
+  width: $size;
+  height: $size;
+  padding: $padding;
+  transition-duration: 0.5s;
+}
+
+@mixin icon($height, $width) {
+  transition-duration: 0.5s;
+  position: absolute;
+  height: $height;
+  width: $width;
+  top: $center;
+  background-color: $color;
+}
+
+@mixin icon-before($height, $width, $top) {
+  transition-duration: 0.5s;
+  position: absolute;
+  width: $width;
+  height: $height;
+  background-color: $color;
+  content: "";
+  top: $top;
+}
+
+@mixin icon-after($height, $width, $top) {
+  transition-duration: 0.5s;
+  position: absolute;
+  width: $width;
+  height: $height;
+  background-color: $color;
+  content: "";
+  top: $top;
+}
+
+.ham-menu-back {
+
+  @include btn();
+
+  .icon {
+    @include icon($bar-weight, $size);
+
+    &:before {
+      @include icon-before($bar-weight, $size, -$bar-space);
+    }
+
+    &:after {
+      @include icon-after($bar-weight, $size, $bar-space);
+    }
+  }
+
+  &.open {
+    .icon {
+      transition: 0.5s;
+
+      &:before {
+        transform: rotateZ(-45deg) scaleX(0.75) translate(-$bar-space, -$bar-arrow);
+      }
+
+      &:after {
+        transform: rotateZ(45deg) scaleX(0.75) translate(-$bar-space, $bar-arrow);
+      }
+    }
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}

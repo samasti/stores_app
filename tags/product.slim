@@ -8,14 +8,13 @@ product
       /h2.mdc-card__subtitle Subtitle here
       icon-toggle id='{p.id}' on-icon='favorite' off-icon='favorite_border' remove-label='Remover dos favoritos' add-label='Adicionar aos favoritos'
 
-
-    section.mdc-card__media style='background-image: url({apiData.host+p.image_big})'
+    section.mdc-card__media style='background-image: url({apiData.host+p.image})'
 
     section.mdc-card__supporting-text
       '{p.description}
 
     section.mdc-card__actions
-      fab icon='add' label='adicionar' onclick='{add}'
+      fab icon='add_shopping_cart' label='adicionar' onclick='{add}'
 
   javascript:
     this.p = opts.product

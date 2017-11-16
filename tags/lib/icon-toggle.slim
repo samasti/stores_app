@@ -1,7 +1,7 @@
 ---
 ---
 icon-toggle
-  i.mdc-icon-toggle.material-icons.mdc-ripple-upgraded.mdc-ripple-upgraded--unbounded role='button' ref='icon' aria-label='{label}' aria-pressed='false' tabindex='-1'
+  i.mdc-icon-toggle.material-icons role='button' ref='icon' aria-label='{label}' aria-pressed='false' tabindex='-1'
     '{icon}
 
   javascript:
@@ -10,6 +10,7 @@ icon-toggle
     this.addLabel    = opts.addLabel
     this.removeLabel = opts.removeLabel
 
+    this.id          = opts.id
     this.icon        = this.offIcon
     this.label       = opts.addLabel
 

@@ -2,15 +2,37 @@
   <header class="mdc-toolbar">
     <div class="mdc-toolbar__row">
       <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
-        <a class="material-icons mdc-toolbar__icon--menu" href="#" onclick="{openMenu}" show="{false}">menu</a><span class="mdc-toolbar__title">Poda</span>
+        <span class="mdc-toolbar__menu-icon ham-menu-back" onclick="{onMenuClick}" ref="menu">
+          <div class="icon"></div>
+        </span><span class="mdc-toolbar__title">Poda</span>
+      </section>
+      <section class="mdc-toolbar__section mdc-toolbar__section--align-end">
+        <a alt="Pedido" aria-label="Pedido" class="material-icons mdc-toolbar__icon" href="#" onclick="{openCurrentOrder}">shopping_cart</a>
       </section>
     </div>
-    <tabs></tabs>
   </header>
   <menu></menu>
   <script>
+    onMenuClick() {
+      if ($(this.refs.menu).hasClass('open'))
+        app.pageManager.goHome()
+      else
+        this.openMenu()
+    }
+    
     openMenu() {
       this.tags.menu.open()
+    }
+    
+    openCurrentOrder() {
+      app.pageManager.navigate('current-order')
+    }
+    
+    forward() {
+      $(this.refs.menu).addClass('open')
+    }
+    back() {
+      $(this.refs.menu).removeClass('open')
     }
   </script>
   <style type="text/css">
@@ -18,7 +40,7 @@
       min-height: 40px;
     }
     .mdc-toolbar__title {
-      padding-bottom: 0px; /* too much space down */
+      //padding-bottom: 0px; /* too much space down with tabs */
     }
   </style>
 </toolbar>

@@ -1,0 +1,15 @@
+---
+---
+past-orders
+
+  order each='{order in orders}' order='{order}'
+
+  javascript:
+
+    load() {
+      api.orders({action: 'index'}).then(function(json) {
+        this.orders = json
+        this.update()
+      }.bind(this))
+    }
+

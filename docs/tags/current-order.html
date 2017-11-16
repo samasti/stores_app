@@ -1,0 +1,8 @@
+<current-order><order if="{lastOrder}" order="{lastOrder}"></order>
+  <script>
+    api.orders({action: 'last'}).then(function(json) {
+      this.lastOrder = json
+      this.update()
+    }.bind(this))
+  </script>
+</current-order>
