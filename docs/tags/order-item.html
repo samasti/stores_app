@@ -1,9 +1,15 @@
-<order-item><img class="mdc-list-item__start-detail" height="56" src="{apiData.host+i.image}" width="56" /><span class="mdc-list-item__text">{i.name} <span class="mdc-list-item__text__secondary">{formattedQuantity()} {i.unit_name}(s) <span class="item-price">{order.currency_unit}{i.price.toFixed(2)} </span></span></span><span class="mdc-list-item__end-detail"><a class="material-icons">remove_shopping_cart </a></span>
+<order-item><img class="mdc-list-item__start-detail" height="56" src="{apiData.host+i.image}" width="56" /><span class="mdc-list-item__text">{i.name} <span class="mdc-list-item__text__secondary">{formattedQuantity()} {i.unit_name}(s) <span class="item-price">{order.currency_unit}{i.price.toFixed(2)} </span></span></span><span class="mdc-list-item__end-detail"><a class="material-icons" onclick="{remove}">remove_shopping_cart </a></span>
   <script>
     this.i     = opts.item
     this.order = this.parent.order
     
     this.i.price = parseFloat(this.i.price)
+    
+    remove() {
+      api.removeItem(this.i.id).then(function(json) {
+        this.parent.remove(this.i)
+      }.bind(this))
+    }
     
     formattedQuantity() {
       var q = this.i.status_quantity

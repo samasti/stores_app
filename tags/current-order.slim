@@ -5,8 +5,17 @@ current-order
   order order='{lastOrder}' if='{lastOrder}'
 
   javascript:
+    app.currentOrder = this
+
+    add(product) {
+      this.tags.order.add(product)
+    }
+
     api.orders({action: 'last'}).then(function(json) {
       this.lastOrder = json
       this.update()
     }.bind(this))
+
+    this.on('mount', function () {
+    })
 

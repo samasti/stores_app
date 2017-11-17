@@ -10,8 +10,14 @@
     </div>
   </div>
   <script>
-    this.on('mount', function () {
-      app.loading = this.refs.loading
-    })
+    app.loading = this
+    
+    show() {
+      $(this.refs.loading).show()
+    }
+    
+    hide() {
+      $(this.refs.loading).hide()
+    }
   </script>
 </loading>

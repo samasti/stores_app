@@ -11,8 +11,13 @@ loading
       span.mdc-linear-progress__bar-inner
 
   javascript:
+    app.loading = this
 
-    this.on('mount', function () {
-      app.loading = this.refs.loading
-    })
+    show() {
+      $(this.refs.loading).show()
+    }
+
+    hide() {
+      $(this.refs.loading).hide()
+    }
 

@@ -9,25 +9,49 @@ window.api = {
   baseUrl: `${apiData.host}/profile/${apiData.profile}/plugin/stores_app`,
 
   catalog: () => {
-    return api.req({
+    return api.get({
       path: `catalog/listing`,
     })
   },
 
   orders: ({action = 'last'}) => {
-    return api.req({
+    return api.get({
       path: `orders/${action}`,
     })
   },
 
-  req: ({path, params = {}}) => {
-    $(app.loading).show()
+  addItem: (product_id) => {
+    return api.get({
+      path:   `items/add`,
+      params: {
+        product_id: product_id,
+      },
+    })
+  },
+
+  removeItem: (id) => {
+    return api.get({
+      path: `items/remove/${id}`,
+    })
+  },
+
+  get: ({path, params = {}}) => {
+    return api.req({path: path, params: params})
+  },
+
+  req: ({path, method = 'GET', params = {}}) => {
+    app.loading.show()
+
+    var options = {
+      method: method,
+    }
 
     return window
-    .fetch(`${api.baseUrl}/${path}?${url.objectToQuery(params)}`)
-    .then((response) => {
-      return response.json()
-    })
+      .fetch(`${api.baseUrl}/${path}?${url.objectToQuery(params)}`, options)
+      .then((response) => {
+        app.loading.hide()
+        return response.json()
+      })
   },
 
 }

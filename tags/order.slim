@@ -18,6 +18,18 @@ order
   javascript:
     this.order = opts.order
 
+    add(product) {
+      api.addItem(product.id).then(function(order) {
+        this.order = order
+        this.update()
+      }.bind(this))
+    }
+
+    remove(item) {
+      _.remove(this.order.items, {id: item.id})
+      this.update()
+    }
+
     this.on('mount', function () {
       $('.mdc-list-item').each(function(i) {
         mdc.ripple.MDCRipple.attachTo(this)

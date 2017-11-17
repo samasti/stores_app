@@ -14,7 +14,7 @@ order-item
     /span.mdc-form-field
       input type='number' name='consumer_quantity'
 
-    a.material-icons
+    a.material-icons onclick='{remove}'
       'remove_shopping_cart
 
   javascript:
@@ -22,6 +22,12 @@ order-item
     this.order = this.parent.order
 
     this.i.price = parseFloat(this.i.price)
+
+    remove() {
+      api.removeItem(this.i.id).then(function(json) {
+        this.parent.remove(this.i)
+      }.bind(this))
+    }
 
     formattedQuantity() {
       var q = this.i.status_quantity
