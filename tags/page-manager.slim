@@ -2,7 +2,7 @@
 ---
 page-manager
 
-  store-tab.page.main-page id='store'
+  store-tab.page.main-page.active id='store'
 
   cycles-tab.page id='cycles'
   past-orders.page id='orders'
@@ -11,14 +11,27 @@ page-manager
   javascript:
 
     select(page) {
-      $('.page').hide()
-      $(page).show()
+      page = $(page)
+      var active = $('.page.active')
+      var main   = $('.main-page')
+
+      if ($(page).get(0) == active.get(0)) return
+
+      if (!active.hasClass('main-page'))
+        active.animateCss('slideOutRight', function() {
+          active.removeClass('active')
+        })
+
+      if (!page.hasClass('main-page'))
+        $(page).animateCss('slideInRight', function() {
+          active.removeClass('active')
+        })
+      $(page).addClass('active')
     }
 
     goHome() {
       app.toolbar.back()
-      $('.page').hide()
-      $('.main-page').show()
+      this.select('.main-page')
     }
 
     navigate(page) {
@@ -27,5 +40,27 @@ page-manager
     }
 
     this.on('mount', function() {
-      this.goHome()
     }.bind(this))
+
+  css:
+    page-manager {
+      position: relative;
+      display: block;
+    }
+    .page {
+      position: absolute;
+      width: 100%;
+      height: 500px;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      opacity: 0;
+      background: white;
+      animation-duration: 200ms;
+    }
+    .page.active {
+      z-index: 1;
+      opacity: 1;
+    }
+
+
