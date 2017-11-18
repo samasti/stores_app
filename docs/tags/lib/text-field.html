@@ -1,0 +1,20 @@
+<text-field>
+  <div class="mdc-text-field" ref="field">
+    <input aria-controls="my-text-field-helptext" class="mdc-text-field__input" type="{type}" /><label class="mdc-text-field__label">{label} </label>
+    <div class="mdc-text-field__bottom-line"></div>
+  </div>
+  <script>
+    this.type  = opts.type || 'text'
+    this.label = opts.label
+    
+    this.on('mount', function() {
+      mdc.textField.MDCTextField.attachTo(this.refs.field);
+    })
+  </script>
+  <style type="text/css">
+    .mdc-text-field {
+      display: block;
+      width: 100%;
+    }
+  </style>
+</text-field>

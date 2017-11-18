@@ -1,10 +1,15 @@
-<app><toolbar></toolbar><loading></loading><page-manager></page-manager>
+<app><start if="{!user}"></start>
+  <div class="logged" if="{user}">
+    <toolbar></toolbar><loading></loading><page-manager></page-manager>
+  </div>
   <script>
     window.app = this
     
+    mdc.autoInit()
+    
     this.on('mount', function() {
-      this.pageManager = this.tags['page-manager']
       this.toolbar     = this.tags.toolbar
+      this.pageManager = this.tags['page-manager']
     })
   </script>
 </app>

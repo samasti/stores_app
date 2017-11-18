@@ -1,0 +1,53 @@
+---
+---
+logo-animation
+
+  .logo-present.presentation-phase ref='logo-present'
+    .full-small-logo
+      .logo-small
+
+  javascript:
+    this.on('mount', function() {
+      $('.logo-present').animateCss('logo-move-phase', function() {
+        $('.logo-present, .login').removeClass('presentation-phase')
+      })
+    })
+
+  scss:
+    .logo-present {
+      display: none;
+    }
+    .presentation-phase {
+      &.logo-present {
+        display: block;
+      }
+      &.login {
+        display: none;
+      }
+    }
+
+    .full-small-logo {
+      height: 100vh;
+      background: #f1f1c2;
+
+      .logo-small {
+        height: 100%;
+        background: url(images/start_logo_small.png) center center no-repeat;
+        background-size: 60px;
+      }
+    }
+
+    @keyframes logoMove {
+      100% {
+        background-position: 7px 33px;
+        background-size: 140px;
+      }
+    }
+
+    .logo-move-phase .logo-small {
+      animation-name: logoMove;
+      animation-iteration-count: once;
+      animation-timing-function: ease-out;
+      animation-duration: 1.0s;
+    }
+

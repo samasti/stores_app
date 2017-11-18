@@ -2,17 +2,20 @@
 ---
 app
 
-  toolbar
+  start if='{!user}'
 
-  loading
-
-  page-manager
+  .logged if='{user}'
+    toolbar
+    loading
+    page-manager
 
   javascript:
     window.app = this
 
+    mdc.autoInit()
+
     this.on('mount', function() {
-      this.pageManager = this.tags['page-manager']
       this.toolbar     = this.tags.toolbar
+      this.pageManager = this.tags['page-manager']
     })
 

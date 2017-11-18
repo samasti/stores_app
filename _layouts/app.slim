@@ -40,16 +40,19 @@ html.mdc-typography
     / components
     script type='riot/tag' src='tags/lib/fab.html'
     script type='riot/tag' src='tags/lib/icon-toggle.html'
+    script type='riot/tag' src='tags/lib/text-field.html'
 
     script type='riot/tag' src='tags/app.html'
-    script type='riot/tag' src='tags/loading.html'
-    script type='riot/tag' src='tags/tabs.html'
-    script type='riot/tag' src='tags/toolbar.html'
-    script type='riot/tag' src='tags/menu.html'
 
+    script type='riot/tag' src='tags/start.html'
+    script type='riot/tag' src='tags/logo-animation.html'
+
+    script type='riot/tag' src='tags/menu.html'
+    script type='riot/tag' src='tags/toolbar.html'
+    script type='riot/tag' src='tags/tabs.html'
+    script type='riot/tag' src='tags/loading.html'
     script type='riot/tag' src='tags/page-manager.html'
-    script type='riot/tag' src='tags/store-tab.html'
-    script type='riot/tag' src='tags/cycles-tab.html'
+
     script type='riot/tag' src='tags/past-orders.html'
     script type='riot/tag' src='tags/current-order.html'
 
@@ -65,7 +68,6 @@ html.mdc-typography
     app
 
     javascript:
-      mdc.autoInit()
       riot.mount('app')
 
     |{{ content }}
