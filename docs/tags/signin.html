@@ -1,7 +1,10 @@
-<signin><text-field label="Email ou celular" ref="login"></text-field><text-field label="Senha" ref="password" type="password"></text-field><br /><button-tag class="center" label="Entrar"></button-tag><br /><line-sep text="ou"></line-sep><br /><button-tag class="center" label="Criar nova conta" onclick="{signup}"></button-tag>
+<signin>
+  <div class="form">
+    <text-field label="Email ou celular" ref="login"></text-field><text-field label="Senha" ref="password" type="password"></text-field><br /><button-tag class="center" label="Entrar"></button-tag><br /><line-sep text="ou"></line-sep><br /><button-tag class="center" label="Criar nova conta" onclick="{signup}"></button-tag>
+  </div>
   <script>
     signup() {
-      app.pageManager.navigate('.signup')
+      app.pageManager.navigate('signup')
     }
   </script>
   <style type="text/css">
