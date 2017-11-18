@@ -2,14 +2,15 @@
 ---
 logo-animation
 
-  .logo-present.presentation-phase ref='logo-present'
+  .logo-present.presentation-phase
     .full-small-logo
       .logo-small
 
   javascript:
+
     this.on('mount', function() {
       $('.logo-present').animateCss('logo-move-phase', function() {
-        $('.logo-present, .login').removeClass('presentation-phase')
+        $('.presentation-phase').removeClass('presentation-phase')
       })
     })
 
@@ -18,11 +19,10 @@ logo-animation
       display: none;
     }
     .presentation-phase {
+      display: none;
+
       &.logo-present {
         display: block;
-      }
-      &.login {
-        display: none;
       }
     }
 
@@ -49,5 +49,6 @@ logo-animation
       animation-iteration-count: once;
       animation-timing-function: ease-out;
       animation-duration: 1.0s;
+      animation-delay: 0.5s;
     }
 

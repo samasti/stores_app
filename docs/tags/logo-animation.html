@@ -1,5 +1,5 @@
 <logo-animation>
-  <div class="logo-present presentation-phase" ref="logo-present">
+  <div class="logo-present presentation-phase">
     <div class="full-small-logo">
       <div class="logo-small"></div>
     </div>
@@ -7,7 +7,7 @@
   <script>
     this.on('mount', function() {
       $('.logo-present').animateCss('logo-move-phase', function() {
-        $('.logo-present, .login').removeClass('presentation-phase')
+        $('.presentation-phase').removeClass('presentation-phase')
       })
     })
   </script>
@@ -16,11 +16,11 @@
       display: none;
     }
     
+    .presentation-phase {
+      display: none;
+    }
     .presentation-phase.logo-present {
       display: block;
-    }
-    .presentation-phase.login {
-      display: none;
     }
     
     .full-small-logo {
@@ -44,6 +44,7 @@
       animation-iteration-count: once;
       animation-timing-function: ease-out;
       animation-duration: 1.0s;
+      animation-delay: 0.5s;
     }
   </style>
 </logo-animation>
