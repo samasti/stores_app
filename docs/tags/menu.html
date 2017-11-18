@@ -6,12 +6,17 @@
           <Header>Poda</Header>
         </div>
       </header>
-      <nav class="mdc-temporary-drawer__content mdc-list" id="icon-with-text-demo">
-        <a class="mdc-list-item mdc-temporary-drawer--selected" href="#"><i aria-hidden="true" class="material-icons mdc-list-item__start-detail">inbox</i>Inbox </a>
+      <nav class="mdc-temporary-drawer__content mdc-list">
+        <a class="mdc-list-item" onclick="{signout}"><i aria-hidden="true" class="material-icons mdc-list-item__start-detail">exit_to_app</i>Sair </a>
       </nav>
     </nav>
   </aside>
   <script>
+    signout() {
+      window.user = storage.set('user', null)
+      app.update()
+    }
+    
     open() {
       this.drawer.open = true
     }

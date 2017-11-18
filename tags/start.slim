@@ -5,7 +5,6 @@ start
   page-manager
     .page.main-page.active
       logo-animation.presentation-phase
-
       .login.presentation-phase
         .logo
           img src='images/start_logo.png'
@@ -16,6 +15,13 @@ start
   javascript:
 
   scss:
+    .presentation-phase {
+      display: none;
+    }
+    logo-animation.presentation-phase {
+      display: block;
+    }
+
     start {
       display: block;
       height: 100vh;
@@ -28,5 +34,4 @@ start
     .logo img {
       width: 100%;
     }
-
 

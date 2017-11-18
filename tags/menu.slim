@@ -1,18 +1,23 @@
 ---
 ---
 menu
-  aside class='mdc-temporary-drawer mdc-typography' ref='drawer'
-    nav class='mdc-temporary-drawer__drawer'
-      header class='mdc-temporary-drawer__header'
-        div class='mdc-temporary-drawer__header-content'
+  aside.mdc-temporary-drawer.mdc-typography ref='drawer'
+    nav.mdc-temporary-drawer__drawer
+      header.mdc-temporary-drawer__header
+        .mdc-temporary-drawer__header-content
           Header Poda
 
-      nav id='icon-with-text-demo' class='mdc-temporary-drawer__content mdc-list'
-        a class='mdc-list-item mdc-temporary-drawer--selected' href='#'
-          i class='material-icons mdc-list-item__start-detail' aria-hidden='true' inbox
-          'Inbox
+      nav.mdc-temporary-drawer__content.mdc-list
+        a.mdc-list-item onclick='{signout}'
+          i.material-icons.mdc-list-item__start-detail aria-hidden='true' exit_to_app
+          'Sair
 
   javascript:
+
+    signout() {
+      window.user = storage.set('user', null)
+      app.update()
+    }
 
     open() {
       this.drawer.open = true

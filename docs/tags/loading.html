@@ -12,12 +12,13 @@
   <script>
     app.loading = this
     
+    // There can me multiple loading elements (e.g. signin/signup)
+    // So the selector should select all
     show() {
-      $(this.refs.loading).css('opacity', 1)
+      $('loading .mdc-linear-progress').css('opacity', 1)
     }
-    
     hide() {
-      $(this.refs.loading).css('opacity', 0)
+      $('loading .mdc-linear-progress').css('opacity', 0)
     }
   </script>
   <style type="text/css">

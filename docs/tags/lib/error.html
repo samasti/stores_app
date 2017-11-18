@@ -1,0 +1,16 @@
+<error>
+  <div class="mdc-text-field--invalid">
+    {msg} 
+  </div>
+  <script>
+    this.on('update', function() {
+      this.msg = this.opts.message
+    })
+  </script>
+  <style type="text/css">
+    error {
+      color: #d50000;
+      font-size: 80%;
+    }
+  </style>
+</error>

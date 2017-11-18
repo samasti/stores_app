@@ -2,11 +2,22 @@
 
 window.apiData = {
   profile: 'poda',
-  host: 'http://localhost:3000'
+  host: 'http://localhost:3000',
+  auth_token: storage.get('auth_token')
 };
 
 window.api = {
   baseUrl: apiData.host + '/profile/' + apiData.profile + '/plugin/stores_app',
+
+  signin: function signin(login, password) {
+    return api.post({
+      path: 'users/signin',
+      params: {
+        login: login,
+        password: password
+      }
+    });
+  },
 
   catalog: function catalog() {
     return api.get({
@@ -43,23 +54,39 @@ window.api = {
     var _ref2$params = _ref2.params;
     var params = _ref2$params === undefined ? {} : _ref2$params;
 
-    return api.req({ path: path, params: params });
+    return api.req({ path: path, method: 'GET', params: params });
   },
-
-  req: function req(_ref3) {
+  post: function post(_ref3) {
     var path = _ref3.path;
-    var _ref3$method = _ref3.method;
-    var method = _ref3$method === undefined ? 'GET' : _ref3$method;
     var _ref3$params = _ref3.params;
     var params = _ref3$params === undefined ? {} : _ref3$params;
+
+    return api.req({ path: path, method: 'POST', params: params });
+  },
+
+  req: function req(_ref4) {
+    var path = _ref4.path;
+    var _ref4$method = _ref4.method;
+    var method = _ref4$method === undefined ? 'GET' : _ref4$method;
+    var _ref4$params = _ref4.params;
+    var params = _ref4$params === undefined ? {} : _ref4$params;
 
     app.loading.show();
 
     var options = {
       method: method
     };
+    params.auth_token = apiData.auth_token;
 
-    return window.fetch(api.baseUrl + '/' + path + '?' + url.objectToQuery(params), options).then(function (response) {
+    var u;
+    if (method == 'GET') u = api.baseUrl + '/' + path + '?' + url.objectToQuery(params);else {
+      u = api.baseUrl + '/' + path;
+
+      options.body = new FormData();
+      for (var k in params) options.body.append(k, params[k]);
+    }
+
+    return window.fetch(u, options).then(function (response) {
       app.loading.hide();
       return response.json();
     });

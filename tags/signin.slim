@@ -2,18 +2,40 @@
 ---
 signin
 
+  loading
+
   .form
+    error message='{error}'
+
     text-field label='Email ou celular' ref='login'
     text-field label='Senha' type='password' ref='password'
 
     br
-    button-tag.center label='Entrar'
+    button-tag.center label='Entrar' onclick='{signin}'
     br
     line-sep text='ou'
     br
     button-tag.center label='Criar nova conta' onclick='{signup}'
 
   javascript:
+
+    signin() {
+      var login    = this.refs.login.value()
+      var password = this.refs.password.value()
+
+      api.signin(login, password).then(function (user) {
+        if (user.error) {
+          this.error = 'Email, celular ou senha incorretos'
+          return this.update()
+        }
+
+        storage.set('auth_token', user.auth_token)
+        storage.set('user', user)
+        apiData.auth_token = user.auth_token
+        window.user        = user
+        app.update()
+      }.bind(this))
+    }
 
     signup() {
       app.pageManager.navigate('signup')
