@@ -2,7 +2,7 @@
   <div class="mdc-card">
     <section class="mdc-card__primary">
       <div class="mdc-typography--subheading2 total">
-        Total do pedido ({order.items.length} itens): <span class="total-price">{order.currency_unit}{order.total_price.toFixed(2)} </span><button class="mdc-button mdc-button--raised confirm">Fechar </button>
+        Total do pedido ({order.items.length} itens): <span class="total-price">{order.currency_unit}{order.total_price.toFixed(2)} </span><button-tag class="confirm" label="Fechar"></button-tag>
       </div>
       <ul class="mdc-list mdc-list--avatar-list">
         <li class="mdc-list-item" data-is="order-item" each="{i in order.items}" item="{i}"></li>

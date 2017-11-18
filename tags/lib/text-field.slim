@@ -3,21 +3,30 @@
 text-field
 
   .mdc-text-field ref='field'
-    input.mdc-text-field__input type='{type}' aria-controls='my-text-field-helptext'
+    input.mdc-text-field__input ref='input' type='{type}' aria-controls='my-text-field-helptext'
     label.mdc-text-field__label
       '{label}
     .mdc-text-field__bottom-line
 
   javascript:
+    this.name  = opts.name
     this.type  = opts.type || 'text'
     this.label = opts.label
+
+    value() {
+      return this.ref.input.val
+    }
 
     this.on('mount', function() {
       mdc.textField.MDCTextField.attachTo(this.refs.field);
     })
 
-  css:
+  scss:
     .mdc-text-field {
       display: block;
       width: 100%;
+    }
+
+    text-field {
+      display: block;
     }

@@ -9,8 +9,7 @@ order
         span.total-price
           '{order.currency_unit}{order.total_price.toFixed(2)}
 
-        button.mdc-button.mdc-button--raised.confirm
-          'Fechar
+        button-tag.confirm label='Fechar'
 
       ul.mdc-list.mdc-list--avatar-list
         li.mdc-list-item each='{i in order.items}' data-is='order-item' item='{i}'

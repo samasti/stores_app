@@ -1,0 +1,15 @@
+<button-tag>
+  <div class="button-wrap">
+    <button class="mdc-button mdc-button--raised" ref="button">{label}</button>
+  </div>
+  <script>
+    this.label = opts.label
+    
+    this.on('mount', function() {
+      mdc.ripple.MDCRipple.attachTo(this.refs.button);
+    })
+  </script>
+  <style type="text/css">
+    
+  </style>
+</button-tag>

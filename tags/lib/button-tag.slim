@@ -1,0 +1,17 @@
+---
+---
+button-tag
+
+  .button-wrap
+    button.mdc-button.mdc-button--raised ref='button'
+      |{label}
+
+  javascript:
+    this.label = opts.label
+
+    this.on('mount', function() {
+      mdc.ripple.MDCRipple.attachTo(this.refs.button);
+    })
+
+  scss:
+    // some css at app due to scope

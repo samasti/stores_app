@@ -1,0 +1,32 @@
+---
+---
+line-sep
+
+  .wrap-1
+    span.wrap-2
+      '{text}
+
+  javascript:
+    this.text = opts.text
+
+  scss:
+    line-sep {
+      display: block;
+
+      .wrap-1 {
+        width: 100%;
+        border-bottom: 1px solid #ddd;
+        height: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .wrap-2 {
+        padding: 0 10px;
+        background: white; // not generic
+        font-size: 80%;
+        position: relative;
+        top: 50%;
+      }
+    }
+

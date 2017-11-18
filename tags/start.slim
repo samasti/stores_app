@@ -8,12 +8,28 @@ start
     .logo
       img src='images/start_logo.png'
 
-    text-field label='Nome'
-    text-field label='Email'
-    text-field label='Senha' type='password'
+    page-manager
+      .signin.page.main-page.active
+        text-field label='Email ou celular' ref='login'
+        text-field label='Senha' type='password' ref='password'
+
+        br
+        button-tag.center label='Entrar'
+        br
+        line-sep text='ou'
+        br
+        button-tag.center label='Criar nova conta' onclick='{signup}'
+
+      .signup.page
+        text-field label='Nome' ref='name'
+        text-field label='Email' type='email' ref='email'
+        text-field label='Celular' ref='phone'
+        text-field label='Senha' type='password' ref='password'
+
+        br
+        button-tag.center label='Registrar-se'
 
   javascript:
-
 
   scss:
     start {
@@ -27,5 +43,9 @@ start
     }
     .logo img {
       width: 100%;
+    }
+
+    .form {
+      margin: 30px;
     }
 

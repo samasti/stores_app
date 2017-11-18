@@ -9,16 +9,16 @@ toolbar
         span.mdc-toolbar__menu-icon.ham-menu-back ref='menu' onclick='{onMenuClick}'
           .icon
         /i.material-icons.mdc-toolbar__menu-icon ref='menu' onclick='{openMenu}' menu
-        span.mdc-toolbar__title Poda
+        span.mdc-toolbar__title
+          '{title}
 
       section.mdc-toolbar__section.mdc-toolbar__section--align-end
-        a.material-icons.mdc-toolbar__icon href='#' aria-label='Pedido' alt='Pedido' onclick='{openCurrentOrder}' shopping_cart
-
-    /tabs
+        yield from='end'
 
   menu
 
   javascript:
+    this.title = opts.title
 
     onMenuClick() {
       if ($(this.refs.menu).hasClass('open'))
@@ -31,16 +31,20 @@ toolbar
       this.tags.menu.open()
     }
 
-    openCurrentOrder() {
-      app.pageManager.navigate('current-order')
-    }
-
     forward() {
       $(this.refs.menu).addClass('open')
     }
     back() {
       $(this.refs.menu).removeClass('open')
     }
+
+    openCurrentOrder() {
+      this.parent.openCurrentOrder()
+    }
+
+    this.on('mount', function () {
+      app.toolbar = this
+    })
 
   css:
     .mdc-toolbar__row {

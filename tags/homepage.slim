@@ -1,0 +1,21 @@
+---
+---
+homepage
+
+  toolbar title='Poda'
+    yield to='end'
+      a.material-icons.mdc-toolbar__icon href='#' aria-label='Pedido' alt='Pedido' onclick='{openCurrentOrder}' shopping_cart
+
+  loading
+
+  page-manager
+    catalog.page.main-page.active
+    past-orders.page
+    current-order.page
+
+  javascript:
+
+    openCurrentOrder() {
+      app.pageManager.navigate('current-order')
+    }
+

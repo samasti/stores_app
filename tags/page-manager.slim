@@ -2,10 +2,7 @@
 ---
 page-manager
 
-  catalog.page.main-page.active id='store'
-
-  past-orders.page id='orders'
-  current-order.page
+  yield
 
   javascript:
 
@@ -39,6 +36,7 @@ page-manager
     }
 
     this.on('mount', function() {
+      app.pageManager = this
     }.bind(this))
 
   css:

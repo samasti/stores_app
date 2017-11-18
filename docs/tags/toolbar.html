@@ -4,15 +4,17 @@
       <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
         <span class="mdc-toolbar__menu-icon ham-menu-back" onclick="{onMenuClick}" ref="menu">
           <div class="icon"></div>
-        </span><span class="mdc-toolbar__title">Poda</span>
+        </span><span class="mdc-toolbar__title">{title} </span>
       </section>
       <section class="mdc-toolbar__section mdc-toolbar__section--align-end">
-        <a alt="Pedido" aria-label="Pedido" class="material-icons mdc-toolbar__icon" href="#" onclick="{openCurrentOrder}">shopping_cart</a>
+        <yield from="end"></yield>
       </section>
     </div>
   </header>
   <menu></menu>
   <script>
+    this.title = opts.title
+    
     onMenuClick() {
       if ($(this.refs.menu).hasClass('open'))
         app.pageManager.goHome()
@@ -24,16 +26,20 @@
       this.tags.menu.open()
     }
     
-    openCurrentOrder() {
-      app.pageManager.navigate('current-order')
-    }
-    
     forward() {
       $(this.refs.menu).addClass('open')
     }
     back() {
       $(this.refs.menu).removeClass('open')
     }
+    
+    openCurrentOrder() {
+      this.parent.openCurrentOrder()
+    }
+    
+    this.on('mount', function () {
+      app.toolbar = this
+    })
   </script>
   <style type="text/css">
     .mdc-toolbar__row {
