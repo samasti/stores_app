@@ -2,9 +2,9 @@
 ---
 app
 
-  start if='{user}'
+  start if='{!user}'
 
-  .logged if='{!user}'
+  .logged if='{user}'
     homepage
 
   javascript:

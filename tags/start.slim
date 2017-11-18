@@ -2,32 +2,17 @@
 ---
 start
 
-  logo-animation.presentation-phase
+  page-manager
+    .page.main-page.active
+      logo-animation.presentation-phase
 
-  .login.presentation-phase
-    .logo
-      img src='images/start_logo.png'
+      .login.presentation-phase
+        .logo
+          img src='images/start_logo.png'
 
-    page-manager
-      .signin.page.main-page.active
-        text-field label='Email ou celular' ref='login'
-        text-field label='Senha' type='password' ref='password'
+        signin.form
 
-        br
-        button-tag.center label='Entrar'
-        br
-        line-sep text='ou'
-        br
-        button-tag.center label='Criar nova conta' onclick='{signup}'
-
-      .signup.page
-        text-field label='Nome' ref='name'
-        text-field label='Email' type='email' ref='email'
-        text-field label='Celular' ref='phone'
-        text-field label='Senha' type='password' ref='password'
-
-        br
-        button-tag.center label='Registrar-se'
+    signup.page.form
 
   javascript:
 

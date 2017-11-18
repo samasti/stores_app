@@ -1,17 +1,14 @@
-<start><logo-animation class="presentation-phase"></logo-animation>
-  <div class="login presentation-phase">
-    <div class="logo">
-      <img src="images/start_logo.png" />
+<start><page-manager>
+    <div class="page main-page active">
+      <logo-animation class="presentation-phase"></logo-animation>
+      <div class="login presentation-phase">
+        <div class="logo">
+          <img src="images/start_logo.png" />
+        </div>
+        <signin class="form"></signin>
+      </div>
     </div>
-    <page-manager>
-      <div class="signin page main-page active">
-        <text-field label="Email ou celular" ref="login"></text-field><text-field label="Senha" ref="password" type="password"></text-field><br /><button-tag class="center" label="Entrar"></button-tag><br /><line-sep text="ou"></line-sep><br /><button-tag class="center" label="Criar nova conta" onclick="{signup}"></button-tag>
-      </div>
-      <div class="signup page">
-        <text-field label="Nome" ref="name"></text-field><text-field label="Email" ref="email" type="email"></text-field><text-field label="Celular" ref="phone"></text-field><text-field label="Senha" ref="password" type="password"></text-field><br /><button-tag class="center" label="Registrar-se"></button-tag>
-      </div>
-    </page-manager>
-  </div>
+    <signup class="page form"></signup></page-manager>
   <script>
   </script>
   <style type="text/css">

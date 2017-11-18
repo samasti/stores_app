@@ -1,0 +1,23 @@
+---
+---
+signin
+  text-field label='Email ou celular' ref='login'
+  text-field label='Senha' type='password' ref='password'
+
+  br
+  button-tag.center label='Entrar'
+  br
+  line-sep text='ou'
+  br
+  button-tag.center label='Criar nova conta' onclick='{signup}'
+
+  javascript:
+    signup() {
+      app.pageManager.navigate('.signup')
+    }
+
+  scss:
+    signin {
+      display: block;
+    }
+

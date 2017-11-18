@@ -33,10 +33,6 @@
       $(this.refs.menu).removeClass('open')
     }
     
-    openCurrentOrder() {
-      this.parent.openCurrentOrder()
-    }
-    
     this.on('mount', function () {
       app.toolbar = this
     })

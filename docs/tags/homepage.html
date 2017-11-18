@@ -1,4 +1,4 @@
-<homepage><toolbar title="Poda"><yield to="end"><a alt="Pedido" aria-label="Pedido" class="material-icons mdc-toolbar__icon" href="#" onclick="{openCurrentOrder}">shopping_cart</a></yield></toolbar><loading></loading><page-manager><catalog class="page main-page active"></catalog><past-orders class="page"></past-orders><current-order class="page"></current-order></page-manager>
+<homepage><toolbar title="Poda"><yield to="end"><a alt="Pedido" aria-label="Pedido" class="material-icons mdc-toolbar__icon" href="#" onclick="{parent.openCurrentOrder}">shopping_cart</a></yield></toolbar><loading></loading><page-manager><catalog class="page main-page active"></catalog><past-orders class="page"></past-orders><current-order class="page"></current-order></page-manager>
   <script>
     openCurrentOrder() {
       app.pageManager.navigate('current-order')
