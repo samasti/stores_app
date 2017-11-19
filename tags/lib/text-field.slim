@@ -36,6 +36,8 @@ text-field
     }
 
     toggleVisibility(e) {
+      $(this.refs.input).focus()
+
       if (e.target.textContent.trim() == 'visibility') {
         e.target.textContent = 'visibility_off'
         this.refs.input.type = 'text'
