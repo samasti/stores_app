@@ -4,7 +4,7 @@ text-field
 
   .mdc-text-field class='{"mdc-text-field--with-trailing-icon": trailingIcon}' ref='field'
 
-    input.mdc-text-field__input required='{required}' ref='input' type='{type}' onclick='{onClick}' aria-controls='my-text-field-helptext'
+    input.mdc-text-field__input required='{required}' ref='input' type='{type}' onclick='{scroll}' aria-controls='my-text-field-helptext'
 
     label.mdc-text-field__label
       '{label}
@@ -28,8 +28,11 @@ text-field
       return this.refs.input.value
     }
 
-    onClick() {
-      this.refs.input.scrollIntoView()
+    scroll() {
+      if (!/Android/.test(navigator.appVersion)) return
+      setTimeout(function() {
+        this.refs.input.scrollIntoView()
+      }.bind(this), 500)
     }
 
     toggleVisibility(e) {
