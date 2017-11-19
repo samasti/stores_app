@@ -1,8 +1,28 @@
-<signup><toolbar title="Criar conta"></toolbar><loading></loading>
-  <div class="form">
-    <text-field label="Nome" ref="name"></text-field><text-field label="Email" ref="email" type="email"></text-field><text-field label="Celular" ref="phone"></text-field><text-field label="Senha" ref="password" type="password"></text-field><br /><button-tag class="center" label="Registrar-se"></button-tag>
-  </div>
+<signup><toolbar title="Criar conta"></toolbar><loading></loading><form-tag error="{error}" ref="form"><text-field label="Nome" ref="name"></text-field><text-field label="Email" ref="email" type="email"></text-field><text-field label="Celular" ref="phone"></text-field><text-field label="Senha" ref="password" type="password"></text-field><br /><button-tag class="center" label="Registrar-se" onclick="{parent.signup}"></button-tag></form-tag>
   <script>
+    signup() {
+      this.form.clearState()
+    
+      api.signup(this.form.values()).then(function (user) {
+        if (user.error == 'user_exists') {
+          this.error = 'Já existe um usuário com este email'
+          return this.update()
+        } else if (user.error == 'invalid_fields') {
+          this.error = 'Campos inválidos'
+          this.form.invalidate(user.fields)
+          return this.update()
+        } else if (user.error) {
+          this.error = 'Dados incorretos'
+          return this.update()
+        }
+    
+        app.login(user)
+      }.bind(this))
+    }
+    
+    this.on('mount', function() {
+      this.form = this.refs.form
+    })
   </script>
   <style type="text/css">
     signup {

@@ -4,16 +4,41 @@ signup
   toolbar title='Criar conta'
   loading
 
-  .form
+  form-tag error='{error}' ref='form'
+
     text-field label='Nome' ref='name'
     text-field label='Email' type='email' ref='email'
     text-field label='Celular' ref='phone'
     text-field label='Senha' type='password' ref='password'
 
     br
-    button-tag.center label='Registrar-se'
+    button-tag.center label='Registrar-se' onclick='{parent.signup}'
 
   javascript:
+
+    signup() {
+      this.form.clearState()
+
+      api.signup(this.form.values()).then(function (user) {
+        if (user.error == 'user_exists') {
+          this.error = 'Já existe um usuário com este email'
+          return this.update()
+        } else if (user.error == 'invalid_fields') {
+          this.error = 'Campos inválidos'
+          this.form.invalidate(user.fields)
+          return this.update()
+        } else if (user.error) {
+          this.error = 'Dados incorretos'
+          return this.update()
+        }
+
+        app.login(user)
+      }.bind(this))
+    }
+
+    this.on('mount', function() {
+      this.form = this.refs.form
+    })
 
   scss:
     signup {

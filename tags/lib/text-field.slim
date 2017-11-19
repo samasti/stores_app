@@ -3,15 +3,19 @@
 text-field
 
   .mdc-text-field ref='field'
-    input.mdc-text-field__input ref='input' type='{type}' onfocus='{focus}' aria-controls='my-text-field-helptext'
+    input.mdc-text-field__input required='{required}' ref='input' type='{type}' onfocus='{focus}' aria-controls='my-text-field-helptext'
+
     label.mdc-text-field__label
       '{label}
+
     .mdc-text-field__bottom-line
 
   javascript:
-    this.name  = opts.name
-    this.type  = opts.type || 'text'
-    this.label = opts.label
+    this.name     = opts.name
+    this.type     = opts.type || 'text'
+    this.label    = opts.label
+    this.invalid  = opts.invalid
+    this.required = opts.required
 
     value() {
       return this.refs.input.value
@@ -19,11 +23,14 @@ text-field
 
     focus() {
       if (!/Android/.test(navigator.appVersion)) return
-      document.activeElement.scrollIntoView()
+      this.refs.input.scrollIntoView()
     }
 
     this.on('mount', function() {
-      mdc.textField.MDCTextField.attachTo(this.refs.field);
+      this.mdcField = new mdc.textField.MDCTextField(this.refs.field);
+    })
+    this.on('update', function() {
+      this.mdcField.valid = !this.invalid
     })
 
   scss:

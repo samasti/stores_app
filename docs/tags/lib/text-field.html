@@ -1,12 +1,14 @@
 <text-field>
   <div class="mdc-text-field" ref="field">
-    <input aria-controls="my-text-field-helptext" class="mdc-text-field__input" onfocus="{focus}" ref="input" type="{type}" /><label class="mdc-text-field__label">{label} </label>
+    <input aria-controls="my-text-field-helptext" class="mdc-text-field__input" onfocus="{focus}" ref="input" required="{required}" type="{type}" /><label class="mdc-text-field__label">{label} </label>
     <div class="mdc-text-field__bottom-line"></div>
   </div>
   <script>
-    this.name  = opts.name
-    this.type  = opts.type || 'text'
-    this.label = opts.label
+    this.name     = opts.name
+    this.type     = opts.type || 'text'
+    this.label    = opts.label
+    this.invalid  = opts.invalid
+    this.required = opts.required
     
     value() {
       return this.refs.input.value
@@ -14,11 +16,14 @@
     
     focus() {
       if (!/Android/.test(navigator.appVersion)) return
-      document.activeElement.scrollIntoView()
+      this.refs.input.scrollIntoView()
     }
     
     this.on('mount', function() {
-      mdc.textField.MDCTextField.attachTo(this.refs.field);
+      this.mdcField = new mdc.textField.MDCTextField(this.refs.field);
+    })
+    this.on('update', function() {
+      this.mdcField.valid = !this.invalid
     })
   </script>
   <style type="text/css">

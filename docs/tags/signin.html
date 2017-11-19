@@ -1,29 +1,23 @@
-<signin><loading></loading>
-  <div class="form">
-    <error message="{error}"></error><text-field label="Email ou celular" ref="login"></text-field><text-field label="Senha" ref="password" type="password"></text-field><br /><button-tag class="center" label="Entrar" onclick="{signin}"></button-tag><br /><line-sep text="ou"></line-sep><br /><button-tag class="center" label="Criar nova conta" onclick="{signup}"></button-tag>
-  </div>
+<signin><loading></loading><form-tag error="{error}" ref="form"><text-field label="Email ou celular" ref="login"></text-field><text-field label="Senha" ref="password" type="password"></text-field><br /><button-tag class="center" label="Entrar" onclick="{parent.signin}"></button-tag><br /><line-sep text="ou"></line-sep><br /><button-tag class="center" label="Criar nova conta" onclick="{parent.signup}"></button-tag></form-tag>
   <script>
     signin() {
-      var login    = this.refs.login.value()
-      var password = this.refs.password.value()
-    
-      api.signin(login, password).then(function (user) {
+      api.signin(this.ref.form.values()).then(function (user) {
         if (user.error) {
           this.error = 'Email, celular ou senha incorretos'
           return this.update()
         }
     
-        storage.set('auth_token', user.auth_token)
-        storage.set('user', user)
-        apiData.auth_token = user.auth_token
-        window.user        = user
-        app.update()
+        app.login(user)
       }.bind(this))
     }
     
     signup() {
       app.pageManager.navigate('signup')
     }
+    
+    this.on('mount', function() {
+    
+    })
   </script>
   <style type="text/css">
     signin {

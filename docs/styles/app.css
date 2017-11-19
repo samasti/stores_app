@@ -1,9 +1,3 @@
 body {
   margin: 0;
   --mdc-theme-primary: #512a19; }
-
-.center .button-wrap {
-  text-align: center; }
-
-.form {
-  margin: 30px; }

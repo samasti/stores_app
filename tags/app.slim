@@ -2,15 +2,21 @@
 ---
 app
 
-  start if='{!user}'
-
-  .logged if='{user}'
-    homepage
+  start    if='{!user}'
+  homepage if='{user}'
 
   javascript:
     window.app = this
 
     mdc.autoInit()
+
+    login(user) {
+      storage.set('auth_token', user.auth_token)
+      storage.set('user', user)
+      apiData.auth_token = user.auth_token
+      window.user        = user
+      this.update()
+    }
 
     this.on('mount', function() {
     })

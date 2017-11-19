@@ -1,7 +1,4 @@
-<button-tag>
-  <div class="button-wrap">
-    <button class="mdc-button mdc-button--raised" ref="button">{label}</button>
-  </div>
+<button-tag><button class="mdc-button mdc-button--raised" ref="button">{label}</button>
   <script>
     this.label = opts.label
     
@@ -10,6 +7,9 @@
     })
   </script>
   <style type="text/css">
-    
+    button-tag.center {
+      margin: 0 auto;
+      display: table;
+    }
   </style>
 </button-tag>

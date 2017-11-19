@@ -2,9 +2,8 @@
 ---
 button-tag
 
-  .button-wrap
-    button.mdc-button.mdc-button--raised ref='button'
-      |{label}
+  button.mdc-button.mdc-button--raised ref='button'
+    |{label}
 
   javascript:
     this.label = opts.label
@@ -14,4 +13,7 @@ button-tag
     })
 
   scss:
-    // some css at app due to scope
+    button-tag.center {
+      margin: 0 auto;
+      display: table;
+    }

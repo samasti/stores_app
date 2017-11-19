@@ -1,0 +1,55 @@
+---
+---
+form-tag
+
+  .mdc-text-field--invalid
+    '{error}
+
+  yield
+
+  javascript:
+
+    invalidate(fields, state) {
+      fields = fields == null ? _.keys(this.refs) : fields
+      state  = state  == null ? true : state
+
+      return _.map(fields, function(name) {
+        var field = this.refs[name]
+        if (!field) return
+
+        field.invalid = state
+        field.update()
+
+        return field
+      }.bind(this))
+    }
+
+    clearState() {
+      this.error = null
+      this.invalidate(null, false)
+      this.update()
+    }
+
+    isValid() {
+
+    }
+
+    values() {
+      return _.mapValues(this.refs, function(v,k) { return v.value() })
+    }
+
+    this.on('update', function() {
+      this.error = this.opts.error
+    })
+
+  scss:
+    form-tag {
+      display: block;
+      margin: 30px;
+    }
+    .mdc-text-field--invalid {
+      color: #d50000;
+      font-size: 80%;
+    }
+
+

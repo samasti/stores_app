@@ -9,13 +9,17 @@ window.apiData = {
 window.api = {
   baseUrl: `${apiData.host}/profile/${apiData.profile}/plugin/stores_app`,
 
-  signin: (login, password) => {
+  signin: (params) => {
     return api.post({
       path:   `users/signin`,
-      params: {
-        login:    login,
-        password: password,
-      },
+      params: params,
+    })
+  },
+
+  signup: (params) => {
+    return api.post({
+      path:   `users/signup`,
+      params: params,
     })
   },
 

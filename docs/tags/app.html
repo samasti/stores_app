@@ -1,11 +1,16 @@
-<app><start if="{!user}"></start>
-  <div class="logged" if="{user}">
-    <homepage></homepage>
-  </div>
+<app><start if="{!user}"></start><homepage if="{user}"></homepage>
   <script>
     window.app = this
     
     mdc.autoInit()
+    
+    login(user) {
+      storage.set('auth_token', user.auth_token)
+      storage.set('user', user)
+      apiData.auth_token = user.auth_token
+      window.user        = user
+      this.update()
+    }
     
     this.on('mount', function() {
     })
