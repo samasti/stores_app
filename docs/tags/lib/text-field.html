@@ -1,6 +1,6 @@
 <text-field>
   <div class="mdc-text-field {&quot;mdc-text-field--with-trailing-icon&quot;: trailingIcon}" ref="field">
-    <input aria-controls="my-text-field-helptext" class="mdc-text-field__input" onfocus="{focus}" ref="input" required="{required}" type="{type}" /><label class="mdc-text-field__label">{label} </label><i class="material-icons mdc-text-field__icon" if="{type == &quot;password&quot;}" onclick="{toggleVisibility}" tabindex="0">visibility </i>
+    <input aria-controls="my-text-field-helptext" class="mdc-text-field__input" onclick="{onClick}" ref="input" required="{required}" type="{type}" /><label class="mdc-text-field__label">{label} </label><i class="material-icons mdc-text-field__icon" if="{type == &quot;password&quot;}" onclick="{toggleVisibility}" tabindex="0">visibility </i>
     <div class="mdc-text-field__bottom-line"></div>
   </div>
   <script>
@@ -16,9 +16,8 @@
       return this.refs.input.value
     }
     
-    focus() {
-      if (!/Android/.test(navigator.appVersion)) return
-      document.activeElement.scrollIntoView()
+    onClick() {
+      this.refs.input.scrollIntoView()
     }
     
     toggleVisibility(e) {
