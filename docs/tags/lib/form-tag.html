@@ -4,6 +4,8 @@
   </div>
   <yield></yield>
   <script>
+    this.submit = opts.submit
+    
     invalidate(fields, state) {
       fields = fields == null ? _.keys(this.refs) : fields
       state  = state  == null ? true : state

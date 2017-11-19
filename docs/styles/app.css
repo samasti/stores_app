@@ -1,8 +1,9 @@
 body {
   margin: 0;
-  --mdc-theme-primary: #512a19; }
+  --mdc-theme-primary: #512a19;
+  --mdc-theme-secondary: #f1f1c2; }
 
-.material-icons {
+.material-icons, .no-select {
   user-select: none;
   outline: none;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0); }

@@ -1,0 +1,25 @@
+---
+---
+snackbar
+
+  .mdc-snackbar aria-live='assertive' aria-atomic='true' aria-hidden='true' ref='snackbar'
+    .mdc-snackbar__text
+    .mdc-snackbar__action-wrapper
+      button.mdc-snackbar__action-button type='button'
+
+  javascript:
+
+    show(message, actionText, actionHandler) {
+      this.mdcSnackbar.show({
+        message:       message,
+        actionText:    actionText,
+        actionHandler: actionHandler,
+      })
+    }
+
+    this.on('mount', function() {
+      this.mdcSnackbar = new mdc.snackbar.MDCSnackbar(this.refs.snackbar)
+    })
+
+  scss:
+

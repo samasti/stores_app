@@ -24,8 +24,8 @@ order-item
     this.i.price = parseFloat(this.i.price)
 
     remove() {
-      api.removeItem(this.i.id).then(function(json) {
-        this.parent.remove(this.i)
+      api.removeItem(this.i.id).then(function(order) {
+        app.currentOrder.setOrder(order)
       }.bind(this))
     }
 

@@ -1,6 +1,6 @@
 <text-field>
   <div class="mdc-text-field {&quot;mdc-text-field--with-trailing-icon&quot;: trailingIcon}" ref="field">
-    <input aria-controls="my-text-field-helptext" class="mdc-text-field__input" onclick="{scroll}" ref="input" required="{required}" type="{type}" /><label class="mdc-text-field__label">{label} </label><i class="material-icons mdc-text-field__icon" if="{type == &quot;password&quot;}" onclick="{toggleVisibility}" tabindex="0">visibility </i>
+    <input class="mdc-text-field__input" onclick="{scroll}" onkeyup="{onKeyUp}" ref="input" required="{required}" type="{type}" /><label class="mdc-text-field__label">{label} </label><i class="material-icons mdc-text-field__icon" if="{type == &quot;password&quot;}" onclick="{toggleVisibility}" tabindex="0">visibility </i>
     <div class="mdc-text-field__bottom-line"></div>
   </div>
   <script>
@@ -14,6 +14,11 @@
     
     value() {
       return this.refs.input.value
+    }
+    
+    onKeyUp(e) {
+      if (event.keyCode === 13)
+        this.form.submit()
     }
     
     scroll() {
@@ -37,6 +42,8 @@
     
     this.on('mount', function() {
       this.mdcField = new mdc.textField.MDCTextField(this.refs.field);
+      if (this.parent.root.tagName == 'FORM-TAG')
+        this.form = this.parent
     })
     this.on('update', function() {
       this.mdcField.valid = !this.invalid
@@ -53,7 +60,6 @@
       bottom: 4px;
       color: var(--mdc-theme-text-secondary-on-light, rgba(0, 0, 0, 0.54));
     }
-    
     .mdc-text-field--with-trailing-icon .mdc-text-field__input {
       padding-left: 0px;
     }

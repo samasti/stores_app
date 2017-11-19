@@ -2,11 +2,12 @@
 ---
 order
 
-  .mdc-card
+  .mdc-card if='{order}'
     section.mdc-card__primary
-      .mdc-typography--subheading2.total
+      .mdc-typography--subheading2.total if='{order.items.length}'
         'Total do pedido ({order.items.length} itens):
-        span.total-price
+
+        span.total-price if='{order.total_price}'
           '{order.currency_unit}{order.total_price.toFixed(2)}
 
         button-tag.confirm label='Fechar'
@@ -19,8 +20,7 @@ order
 
     add(product) {
       api.addItem(product.id).then(function(order) {
-        this.order = order
-        this.update()
+        app.currentOrder.setOrder(order)
       }.bind(this))
     }
 

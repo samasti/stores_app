@@ -4,7 +4,7 @@ text-field
 
   .mdc-text-field class='{"mdc-text-field--with-trailing-icon": trailingIcon}' ref='field'
 
-    input.mdc-text-field__input required='{required}' ref='input' type='{type}' onclick='{scroll}' aria-controls='my-text-field-helptext'
+    input.mdc-text-field__input required='{required}' ref='input' type='{type}' onkeyup='{onKeyUp}' onclick='{scroll}'
 
     label.mdc-text-field__label
       '{label}
@@ -28,6 +28,11 @@ text-field
       return this.refs.input.value
     }
 
+    onKeyUp(e) {
+      if (event.keyCode === 13)
+        this.form.submit()
+    }
+
     scroll() {
       if (!/Android/.test(navigator.appVersion)) return
       setTimeout(function() {
@@ -49,6 +54,8 @@ text-field
 
     this.on('mount', function() {
       this.mdcField = new mdc.textField.MDCTextField(this.refs.field);
+      if (this.parent.root.tagName == 'FORM-TAG')
+        this.form = this.parent
     })
     this.on('update', function() {
       this.mdcField.valid = !this.invalid
@@ -60,13 +67,15 @@ text-field
       width: 100%;
     }
 
-    .mdc-text-field--with-trailing-icon .mdc-text-field__icon {
-      right: 4px;
-      bottom: 4px;
-      color: var(--mdc-theme-text-secondary-on-light,rgba(0,0,0,.54))
-    }
-    .mdc-text-field--with-trailing-icon .mdc-text-field__input {
-      padding-left: 0px;
+    .mdc-text-field--with-trailing-icon {
+      .mdc-text-field__icon {
+        right: 4px;
+        bottom: 4px;
+        color: var(--mdc-theme-text-secondary-on-light,rgba(0,0,0,.54))
+      }
+       .mdc-text-field__input {
+        padding-left: 0px;
+      }
     }
 
     text-field {

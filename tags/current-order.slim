@@ -2,7 +2,7 @@
 ---
 current-order
 
-  order order='{lastOrder}' if='{lastOrder}'
+  order order='{lastOrder}'
 
   javascript:
     app.currentOrder = this
@@ -11,11 +11,15 @@ current-order
       this.tags.order.add(product)
     }
 
-    api.orders({action: 'last'}).then(function(json) {
-      this.lastOrder = json
-      this.update()
-    }.bind(this))
+    setOrder(order) {
+      this.lastOrder        = order
+      this.tags.order.order = order
+      window.user.order     = this.lastOrder
+      app.update()
+      return order
+    }
 
-    this.on('mount', function () {
-    })
+    api.orders({action: 'last'}).then(function(order) {
+      this.setOrder(order)
+    }.bind(this))
 

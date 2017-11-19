@@ -19,6 +19,7 @@
     
     add() {
       app.currentOrder.add(this.p)
+      this.parent.tags.snackbar.show('Produto adicionado', 'Ver pedido', app.homepage.openCurrentOrder)
     }
   </script>
   <style type="text/css">

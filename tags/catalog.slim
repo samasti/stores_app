@@ -1,12 +1,16 @@
 ---
 ---
 catalog
+
   .mdc-grid-list if='{catalog}'
     ul.mdc-grid-list__tiles
       li.mdc-grid-tile each='{p in catalog.products}'
         product product='{p}'
 
+  snackbar
+
   javascript:
+
     api.catalog().then(function(json) {
       this.catalog = json
       this.update()

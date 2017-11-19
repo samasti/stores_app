@@ -1,4 +1,4 @@
-<signup><toolbar title="Criar conta"></toolbar><loading></loading><form-tag error="{error}" ref="form"><text-field label="Nome" ref="name"></text-field><text-field label="Email" ref="email" type="email"></text-field><text-field label="Celular" ref="phone"></text-field><text-field label="Senha" ref="password" type="password"></text-field><br /><button-tag class="center" label="Registrar-se" onclick="{parent.signup}"></button-tag></form-tag>
+<signup><toolbar title="Criar conta"></toolbar><loading></loading><form-tag error="{error}" ref="form" submit="{signup}"><text-field label="Nome" ref="name"></text-field><text-field label="Email" ref="email" type="email"></text-field><text-field label="Celular" ref="phone"></text-field><text-field label="Senha" ref="password" type="password"></text-field><br /><button-tag class="center" label="Registrar-se" onclick="{parent.signup}"></button-tag></form-tag>
   <script>
     signup() {
       this.form.clearState()

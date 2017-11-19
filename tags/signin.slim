@@ -2,19 +2,24 @@
 ---
 signin
 
-  loading
+  logo-animation.presentation-phase
+  .login.presentation-phase
+    .logo
+      img src='images/start_logo.png'
 
-  form-tag error='{error}' ref='form'
+    loading
 
-    text-field label='Email ou celular' ref='login'
-    text-field label='Senha' type='password' ref='password'
+    form-tag error='{error}' ref='form' submit='{signin}'
 
-    br
-    button-tag.center label='Entrar' onclick='{parent.signin}'
-    br
-    line-sep text='ou'
-    br
-    button-tag.center label='Criar nova conta' onclick='{parent.signup}'
+      text-field label='Email ou celular' ref='login'
+      text-field label='Senha' type='password' ref='password'
+
+      br
+      button-tag.center label='Entrar' onclick='{parent.signin}'
+      br
+      line-sep text='ou'
+      br
+      button-tag.center label='Criar nova conta' onclick='{parent.signup}'
 
   javascript:
 
@@ -34,11 +39,25 @@ signin
     }
 
     this.on('mount', function() {
-
     })
 
   scss:
     signin {
       display: block;
+    }
+
+    .presentation-phase {
+      display: none;
+    }
+    logo-animation.presentation-phase {
+      display: block;
+    }
+
+    .logo {
+      padding: 40px 10px;
+      background: #f1f1c2;
+    }
+    .logo img {
+      width: 100%;
     }
 

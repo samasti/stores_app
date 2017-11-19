@@ -8,6 +8,7 @@ form-tag
   yield
 
   javascript:
+    this.submit = opts.submit
 
     invalidate(fields, state) {
       fields = fields == null ? _.keys(this.refs) : fields

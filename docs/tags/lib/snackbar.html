@@ -1,0 +1,24 @@
+<snackbar>
+  <div aria-atomic="true" aria-hidden="true" aria-live="assertive" class="mdc-snackbar" ref="snackbar">
+    <div class="mdc-snackbar__text"></div>
+    <div class="mdc-snackbar__action-wrapper">
+      <button class="mdc-snackbar__action-button" type="button"></button>
+    </div>
+  </div>
+  <script>
+    show(message, actionText, actionHandler) {
+      this.mdcSnackbar.show({
+        message:       message,
+        actionText:    actionText,
+        actionHandler: actionHandler,
+      })
+    }
+    
+    this.on('mount', function() {
+      this.mdcSnackbar = new mdc.snackbar.MDCSnackbar(this.refs.snackbar)
+    })
+  </script>
+  <style type="text/css">
+    
+  </style>
+</snackbar>

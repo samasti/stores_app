@@ -1,5 +1,6 @@
 ---
 ---
+
 product
   .mdc-card
     section.mdc-card__primary
@@ -21,6 +22,7 @@ product
 
     add() {
       app.currentOrder.add(this.p)
+      this.parent.tags.snackbar.show('Produto adicionado', 'Ver pedido', app.homepage.openCurrentOrder)
     }
 
   css:

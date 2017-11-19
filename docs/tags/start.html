@@ -1,37 +1,10 @@
-<start><page-manager>
-    <div class="page main-page active">
-      <logo-animation class="presentation-phase"></logo-animation>
-      <div class="login presentation-phase">
-        <div class="logo">
-          <img src="images/start_logo.png" />
-        </div>
-        <signin></signin>
-      </div>
-    </div>
-    <signup class="page"></signup></page-manager>
+<start><page-manager><signin class="page main-page active"></signin><signup class="page"></signup></page-manager>
   <script>
   </script>
   <style type="text/css">
-    .presentation-phase {
-      display: none;
-    }
-    
-    logo-animation.presentation-phase {
-      display: block;
-    }
-    
     start {
       display: block;
       height: 100vh;
-    }
-    
-    .logo {
-      padding: 40px 10px;
-      background: #f1f1c2;
-    }
-    
-    .logo img {
-      width: 100%;
     }
   </style>
 </start>
