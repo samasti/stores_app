@@ -1,6 +1,6 @@
 <text-field>
   <div class="mdc-text-field" ref="field">
-    <input aria-controls="my-text-field-helptext" class="mdc-text-field__input" ref="input" type="{type}" /><label class="mdc-text-field__label">{label} </label>
+    <input aria-controls="my-text-field-helptext" class="mdc-text-field__input" onfocus="{focus}" ref="input" type="{type}" /><label class="mdc-text-field__label">{label} </label>
     <div class="mdc-text-field__bottom-line"></div>
   </div>
   <script>
@@ -10,6 +10,11 @@
     
     value() {
       return this.refs.input.value
+    }
+    
+    focus() {
+      if (!/Android/.test(navigator.appVersion)) return
+      document.activeElement.scrollIntoView()
     }
     
     this.on('mount', function() {

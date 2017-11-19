@@ -3,7 +3,7 @@
 text-field
 
   .mdc-text-field ref='field'
-    input.mdc-text-field__input ref='input' type='{type}' aria-controls='my-text-field-helptext'
+    input.mdc-text-field__input ref='input' type='{type}' onfocus='{focus}' aria-controls='my-text-field-helptext'
     label.mdc-text-field__label
       '{label}
     .mdc-text-field__bottom-line
@@ -15,6 +15,11 @@ text-field
 
     value() {
       return this.refs.input.value
+    }
+
+    focus() {
+      if (!/Android/.test(navigator.appVersion)) return
+      document.activeElement.scrollIntoView()
     }
 
     this.on('mount', function() {
@@ -30,3 +35,4 @@ text-field
     text-field {
       display: block;
     }
+
