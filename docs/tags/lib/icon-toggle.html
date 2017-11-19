@@ -1,11 +1,13 @@
-<icon-toggle><i aria-label="{label}" aria-pressed="false" class="mdc-icon-toggle material-icons" ref="icon" role="button" tabindex="-1">{icon} </i>
+<icon-toggle><i aria-label="{label}" aria-pressed="false" class="mdc-icon-toggle material-icons {class}" ref="icon" role="button" tabindex="-1">{icon} </i>
   <script>
     this.onIcon      = opts.onIcon
     this.offIcon     = opts.offIcon
     this.addLabel    = opts.addLabel
     this.removeLabel = opts.removeLabel
     
+    this.class       = opts.class
     this.id          = opts.id
+    
     this.icon        = this.offIcon
     this.label       = opts.addLabel
     

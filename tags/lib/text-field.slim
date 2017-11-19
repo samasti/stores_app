@@ -2,13 +2,18 @@
 ---
 text-field
 
-  .mdc-text-field ref='field'
+  .mdc-text-field class='{"mdc-text-field--with-trailing-icon": trailingIcon}' ref='field'
+
     input.mdc-text-field__input required='{required}' ref='input' type='{type}' onfocus='{focus}' aria-controls='my-text-field-helptext'
 
     label.mdc-text-field__label
       '{label}
 
+    i.material-icons.mdc-text-field__icon onclick='{toggleVisibility}' tabindex='0' if='{type == "password"}'
+      'visibility
+
     .mdc-text-field__bottom-line
+
 
   javascript:
     this.name     = opts.name
@@ -17,6 +22,8 @@ text-field
     this.invalid  = opts.invalid
     this.required = opts.required
 
+    this.trailingIcon = this.type == 'password'
+
     value() {
       return this.refs.input.value
     }
@@ -24,6 +31,16 @@ text-field
     focus() {
       if (!/Android/.test(navigator.appVersion)) return
       this.refs.input.scrollIntoView()
+    }
+
+    toggleVisibility(e) {
+      if (e.target.textContent.trim() == 'visibility') {
+        e.target.textContent = 'visibility_off'
+        this.refs.input.type = 'text'
+      } else {
+        e.target.textContent = 'visibility'
+        this.refs.input.type = 'password'
+      }
     }
 
     this.on('mount', function() {
@@ -37,6 +54,15 @@ text-field
     .mdc-text-field {
       display: block;
       width: 100%;
+    }
+
+    .mdc-text-field--with-trailing-icon .mdc-text-field__icon {
+      right: 4px;
+      bottom: 4px;
+      color: var(--mdc-theme-text-secondary-on-light,rgba(0,0,0,.54))
+    }
+    .mdc-text-field--with-trailing-icon .mdc-text-field__input {
+      padding-left: 0px;
     }
 
     text-field {

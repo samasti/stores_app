@@ -19,7 +19,7 @@ signin
   javascript:
 
     signin() {
-      api.signin(this.ref.form.values()).then(function (user) {
+      api.signin(this.refs.form.values()).then(function (user) {
         if (user.error) {
           this.error = 'Email, celular ou senha incorretos'
           return this.update()
