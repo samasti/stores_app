@@ -18,7 +18,7 @@
     
     focus() {
       if (!/Android/.test(navigator.appVersion)) return
-      this.refs.input.scrollIntoView()
+      document.activeElement.scrollIntoView()
     }
     
     toggleVisibility(e) {
