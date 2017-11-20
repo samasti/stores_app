@@ -1,6 +1,6 @@
 source:      .
 destination: ./docs
-layouts:     ./_layouts
+layouts_dir: ./_layouts
 
 plugins:
   - jekyll-babel
