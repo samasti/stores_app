@@ -1,4 +1,8 @@
 
+build
+node_modules
+platforms/android
+plugins
 
 .sass-cache
 .jekyll-metadata
