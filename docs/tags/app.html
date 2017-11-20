@@ -5,11 +5,15 @@
     mdc.autoInit()
     
     login(user) {
-      storage.set('auth_token', user.auth_token)
-      storage.set('user', user)
-      apiData.auth_token = user.auth_token
-      window.user        = user
+      apiData.auth_token = storage.set('auth_token', user.auth_token)
+      window.user        = storage.set('user', user)
       this.update()
+    }
+    
+    logout() {
+      apiData.auth_token = storage.set('auth_token', null)
+      window.user        = storage.set('user', null)
+      app.update()
     }
     
     this.on('mount', function() {

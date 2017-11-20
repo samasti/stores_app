@@ -15,8 +15,6 @@ toolbar
       section.mdc-toolbar__section.mdc-toolbar__section--align-end
         yield from='end'
 
-  menu
-
   javascript:
     this.title = opts.title
 
@@ -28,7 +26,7 @@ toolbar
     }
 
     openMenu() {
-      this.tags.menu.open()
+      app.menu.open()
     }
 
     forward() {

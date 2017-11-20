@@ -3,19 +3,17 @@
     <nav class="mdc-temporary-drawer__drawer">
       <header class="mdc-temporary-drawer__header">
         <div class="mdc-temporary-drawer__header-content">
-          <Header>Poda</Header>
+          {header} 
         </div>
       </header>
       <nav class="mdc-temporary-drawer__content mdc-list">
-        <a class="mdc-list-item" onclick="{signout}"><i aria-hidden="true" class="material-icons mdc-list-item__start-detail">exit_to_app</i>Sair </a>
+        <yield from="list"></yield>
       </nav>
     </nav>
   </aside>
   <script>
-    signout() {
-      window.user = storage.set('user', null)
-      app.update()
-    }
+    app.menu    = this
+    this.header = opts.header
     
     open() {
       this.drawer.open = true
@@ -23,7 +21,7 @@
     
     this.on('mount', function () {
       this.drawer = new mdc.drawer.MDCTemporaryDrawer(this.refs.drawer)
-    }.bind(this))
+    })
   </script>
   <style type="text/css">
     menu {

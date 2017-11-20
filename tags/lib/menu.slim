@@ -5,19 +5,14 @@ menu
     nav.mdc-temporary-drawer__drawer
       header.mdc-temporary-drawer__header
         .mdc-temporary-drawer__header-content
-          Header Poda
+          '{header}
 
       nav.mdc-temporary-drawer__content.mdc-list
-        a.mdc-list-item onclick='{signout}'
-          i.material-icons.mdc-list-item__start-detail aria-hidden='true' exit_to_app
-          'Sair
+        yield from='list'
 
   javascript:
-
-    signout() {
-      window.user = storage.set('user', null)
-      app.update()
-    }
+    app.menu    = this
+    this.header = opts.header
 
     open() {
       this.drawer.open = true
@@ -25,9 +20,10 @@ menu
 
     this.on('mount', function () {
       this.drawer = new mdc.drawer.MDCTemporaryDrawer(this.refs.drawer)
-    }.bind(this))
+    })
 
   css:
     menu {
       margin: 0;
     }
+

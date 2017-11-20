@@ -2,7 +2,7 @@
 
 window.apiData = {
   profile: 'poda',
-  host: 'http://localhost:3000',
+  host: 'http://cirandas.net',
   auth_token: storage.get('auth_token')
 };
 

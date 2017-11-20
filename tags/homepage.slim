@@ -7,6 +7,12 @@ homepage
       a.material-icons.mdc-toolbar__icon href='#' aria-label='Pedido' alt='Pedido' onclick='{parent.openCurrentOrder}' if='{user.order}'
         'shopping_cart
 
+  menu header='Poda'
+    yield to='list'
+      a.mdc-list-item onclick='{app.logout}'
+        i.material-icons.mdc-list-item__start-detail aria-hidden='true' exit_to_app
+        'Sair
+
   loading
 
   page-manager
